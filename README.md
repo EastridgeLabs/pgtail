@@ -24,7 +24,7 @@ Examples:<br />
           pgtail /var/lib/pgsql9/data/pg_log/postgresql-Wed.log (shows all log entries)<br />
 </p>
 
-<script type="text/javascript">/*
+<script type="text/javascript"><!--
 
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', 'UA-36685065-1']);
@@ -36,4 +36,4 @@ Examples:<br />
     var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
 
-*/</script>
+--></script>
