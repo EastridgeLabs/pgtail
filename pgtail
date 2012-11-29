@@ -1,0 +1,64 @@
+#!/usr/bin/python
+
+# Postgresql Log Tail Filter
+#
+# Developer: Eric Goodman
+#
+# Description: This python shell script will execute the tail shell command
+# and pipe the output
+# through a filter showing only the log entries matching the database name
+# specified.
+#
+# Note: The user executing this command must have read access to the
+# postgresql log files.
+#
+# Created: Nov 27, 2012
+# Modified: Nov 28, 2012
+
+import sys
+import subprocess
+
+if len(sys.argv) < 2 or len(sys.argv) > 3:
+
+    print
+    print "PgTail : Postgresql Log Tail Filter by Database Name"
+    print
+    print "    Usage:    %s <postgresql_log_path> <database_name>" % (sys.argv[0])
+    print
+    print "    Examples:  %s /var/lib/pgsql9/data/pg_log/postgresql-Wed.log invoicedb" % (sys.argv[0])
+    print "               %s /var/lib/pgsql9/data/pg_log/postgresql-Wed.log (shows all log entries)" % (sys.argv[0])
+    print
+    print "    Use Ctrl+C to Exit."
+    print
+
+else:
+
+    log_file = sys.argv[1]
+    if len(sys.argv) == 3:
+        log_db = sys.argv[2]
+    else:
+        log_db = "%ALL%"
+    is_current_db = False
+
+    tailproc1 = subprocess.Popen(["tail", "-f", log_file], stdout=subprocess.PIPE)
+
+    while 1:
+        try:
+            line = tailproc1.stdout.readline()
+        except KeyboardInterrupt:
+            tailproc1.stdout.close()
+            break
+
+        if not line:
+            tailproc1.stdout.close()
+            break
+
+        if ('LOG:' in line) and (log_db != "%ALL%"):
+            if log_db+'LOG:' in line:
+                is_current_db = True
+            else:
+                is_current_db = False
+
+        if is_current_db or log_db == "%ALL%":
+            print line,
+
