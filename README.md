@@ -13,7 +13,8 @@ Configuration:
           2) Set the "log_statement" parameter value to 'all' (include single quotes).
           3) Restart the postgres server service
 
-Usage:    "pgtail <postgresql_log_path> [<database_name>]"
+Usage:
+          pgtail <postgresql_log_path> [<database_name>]
 
 Examples:
           pgtail /var/lib/pgsql9/data/pg_log/postgresql-Wed.log invoicedb
