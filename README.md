@@ -14,12 +14,11 @@ Configuration:
           3) Restart the postgres server service
 
 Usage:
-<p>
-          pgtail &lt;postgresql_log_path&gt; [&lt;database_name&gt;]
-</p>
 
-Examples:<br />
-<p>
+          pgtail <postgresql_log_path> [<database_name>]
+
+Examples:
+
           pgtail /var/lib/pgsql9/data/pg_log/postgresql-Wed.log invoicedb<br />
           pgtail /var/lib/pgsql9/data/pg_log/postgresql-Wed.log (shows all log entries)<br />
-</p>
+
