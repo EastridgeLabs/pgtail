@@ -3,7 +3,7 @@ pgtail
 
 Pronounced "pig tail" this python shell script will execute the tail shell command (with the -f, follow option) on your Postgresql database logs. The output is then piped through a database specific filter showing only the log entries and sql statements for that speciific database instead of all of them.
 
-Developer: Eric Goodman
+Developer: Eric Goodman @ Eastridge Labs
 
 Requirements: Python 2.6+, Postgresql 7+ and a Linux or Mac OS shell
 
